@@ -1,5 +1,6 @@
 // Descrizione: 
 // Visualizzare in pagina 5 numeri casuali. 
+
 const randomNumbers = []
 for (let i = 0; i < 5; i++){
     
@@ -23,7 +24,7 @@ setTimeout((e)=>{
 
 // Da lì parte un timer di 30 secondi. 
 const timer = document.getElementById('timer');
-let timerCounter = 31;
+let timerCounter = 3; // DEVE ESSERE 31
 
 setTimeout((e)=>{
 
@@ -35,6 +36,7 @@ setTimeout((e)=>{
         //   timeoutClear 
         if(timerCounter === 0){
             clearInterval(intervalCountdown);
+            numbersList.classList.replace("d-flex", "d-none");
         } 
     
         return timer.innerHTML = timerCounter;
@@ -49,18 +51,39 @@ setTimeout((e)=>{
 // e appaiono invece 5 input in cui l'utente deve inserire i numeri che ha visto precedentemente,
 let userForm = document.getElementById('answers-form');
 setTimeout((e)=>{
-    userForm. // FAI APPARIRE IL FORM, RIRPENDI DA QUI
-}, 32000)
-
-const userInput = document.getElementById('input-group'); 
-
+    userForm.classList.replace("d-none", "d-flex")
+}, 3200) // DEVE ESSERE 32000
 
 
 // Dopo che sono stati inseriti i 5 numeri, 
 // il software dice quanti e quali dei numeri da indovinare sono stati individuati.
+const userChoices = [];
+const userInputs = document.querySelectorAll(".form-control");
+const userSubmit = document.getElementById("confirm");
 
+userSubmit.addEventListener("click", (e)=>{
+    
+    e.preventDefault() // La pagina non si ricarica
 
-// NOTA: non è importante l'ordine con cui l'utente inserisce i numeri, basta che ne indovini il più possibile.
+    for(let i = 0; i < userInputs.length; i++){
+        userChoices.push(Number(userInputs[i].value));
+        console.log(userChoices[i]);
+    }
+
+    for(let i = 0; i < userChoices.length; i++){
+        
+        if(randomNumbers.includes(userChoices[i])){
+            
+            let isTrue = randomNumbers.includes(userChoices[i]);
+            console.log(isTrue);
+        
+        } else {
+            
+            console.log(false);
+
+        }
+    }
+})
 
 
 // BONUS:
