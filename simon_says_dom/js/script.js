@@ -82,6 +82,8 @@ userSubmit.addEventListener("click", (e)=>{
             console.log(false);
 
         }
+        // Sono arrivato fin qui ragazzi, perdonatemi ma sono troppo stanco
+        // lo continuo e lo finisco bene domani, è stata una giornataccia scusatemi
     }
 })
 
